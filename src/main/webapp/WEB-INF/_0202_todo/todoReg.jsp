@@ -2,20 +2,19 @@
   Created by IntelliJ IDEA.
   User: admin
   Date: 26. 1. 30.
-  Time: 오전 11:14
+  Time: 오후 3:05
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>menu</title>
+    <title>등록</title>
 </head>
 <body>
-<h1>메뉴를 고르세요.</h1>
-<p>실습 : doPost용 </p>
-<form action="/menu/result" method="post">
-  <input type="text" name="menuName" id="">
-  <button type="submit">주문</button>
+<h1>todoReg 글쓰기 임시 화면입니다.</h1>
+<form action="/todo/register_0202" method="post">
+    <button type="submit">등록처리</button>
+
 </form>
 </body>
 </html>
