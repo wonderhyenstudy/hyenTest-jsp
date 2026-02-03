@@ -31,9 +31,24 @@ dependencies {
     // https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl
     implementation group: 'jstl', name: 'jstl', version: '1.2'
 
-    //마리아DB 연결도구 외부기능 추가2
+    // 20260202 마리아DB 연결도구 외부기능 추가2
     // https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.5.3'
+
+    // 20260203 Lombok 연결도구 외부기능 추가3
+    // 컴파일 단위, 테스트 단위, 2개 설정 예시
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.38'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.38'
+
+    // test, 단위 테스트에서도, 사용하기.
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.38'
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.38'
+
+    // 20260203 Hikari Cp 연결도구 외부기능 추가4
+    //Hikari Cp 설치
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '6.3.0'
+
 
 
 
