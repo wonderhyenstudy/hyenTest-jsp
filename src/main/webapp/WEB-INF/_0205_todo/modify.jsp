@@ -1,0 +1,59 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: admin
+  Date: 26. 2. 5.
+  Time: 오후 2:26
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>수정하기</title>
+</head>
+<body>
+<h1>modify 수정화면</h1>
+<br>
+<a href="/todo/list_0205">목록 바로가기</a>
+<br>
+
+<h3>하나의 정보를 불러오기, dto 라는 객체에서 정보를 하나씩 꺼내보기</h3>
+<p>_0205_2_TodoDTO 모델클래스의 멤버를 getter로 가져오는 효과</p>
+<p>수정 화면이고, 수정된 내용을, 다시 서버에 전달해서, 수정 진행.</p>
+<form id="form1" action="/todo/update_0205" method="post">
+  <div>
+    <input type="text" name="tno" value="${dto.tno}" id="" readonly>
+    <%--${dto.tno}--%>
+  </div>
+  <div>
+    <input type="text" name="title" value="${dto.title}" id="">
+    <%--    ${dto.title}--%>
+  </div>
+  <div>
+    <input type="date" name="dueDate" value="${dto.dueDate}" id="">
+    <%--    ${dto.dueDate}--%>
+  </div>
+  <div>
+    <input type="checkbox" name="finished" ${dto.finished ? "checked" : ""} id="">
+    ${dto.finished}
+  </div>
+  <br><br>
+  <div>
+    <%-- 주소부분은 오늘 날짜로 변경 해야함.--%>
+    <button type="submit">수정하기</button>
+<%--    <a href="/todo/modify?tno=${dto.tno}">수정하기</a>--%>
+<%--    <a href="/todo/modify?tno=${dto.tno}">삭제하기</a>--%>
+
+  </div>
+</form>
+
+<%--삭제폼--%>
+<form id="form2" action="/todo/delete_0205" method="post">
+  <%-- 삭제시 삭제할 tno 번호를 같이 전달 해야하므로, 숨겨서 보내기--%>
+  <input type="hidden" name="tno" value="${dto.tno}" readonly>
+  <div>
+    <button type="submit">삭제</button>
+  </div>
+</form>
+
+</body>
+</html>
