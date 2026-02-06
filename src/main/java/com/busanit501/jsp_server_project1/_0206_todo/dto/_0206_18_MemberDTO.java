@@ -14,4 +14,6 @@ public class _0206_18_MemberDTO {
     private String mid;
     private String mpw;
     private String mname;
+
+
 }
