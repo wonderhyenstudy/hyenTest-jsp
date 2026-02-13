@@ -17,16 +17,9 @@
     <h1>로그인 에러입니다.</h1>
 </c:if>
 <form action="/login_0209" method="post">
-    <div>
-        <input type="text" name="mid" id="">
-        <input type="text" name="mpw" id="">
-    </div>
-    <div>
-        <%-- 20260209 추가 : 로그인 쿠기 --%>
-        <input type="checkbox" name="auto" id=""><span>자동로그인</span>
-        <button type="submit">로그인</button>
-    </div>
-
+    <input type="text" name="mid" id="">
+    <input type="text" name="mpw" id="">
+    <button type="submit">로그인</button>
 </form>
 </body>
 </html>

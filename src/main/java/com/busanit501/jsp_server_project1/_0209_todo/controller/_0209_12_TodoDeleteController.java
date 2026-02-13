@@ -1,6 +1,6 @@
-package com.busanit501.jsp_server_project1._0206_todo.controller;
+package com.busanit501.jsp_server_project1._0209_todo.controller;
 
-import com.busanit501.jsp_server_project1._0206_todo.service._0206_1_TodoService;
+import com.busanit501.jsp_server_project1._0209_todo.service._0209_2_TodoService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Log4j2
-@WebServlet(name = "_0206_12_TodoDeleteController", value = "/todo/delete_0206")
-public class _0206_12_TodoDeleteController extends HttpServlet {
-    private _0206_1_TodoService todoService = _0206_1_TodoService.INSTANCE;
+@WebServlet(name="_0209_12_TodoDeleteController", urlPatterns = "/todo/delete_0209")
+public class _0209_12_TodoDeleteController extends HttpServlet {
+    // 삭제 처리
 
+    private _0209_2_TodoService todoService = _0209_2_TodoService.INSTANCE;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -29,7 +30,7 @@ public class _0206_12_TodoDeleteController extends HttpServlet {
             log.error(e.getMessage());
             throw new ServletException("삭제 오류");
         }
-        resp.sendRedirect("/todo/list_0206");
+    resp.sendRedirect("/todo/list_0209");
     }
 
 }

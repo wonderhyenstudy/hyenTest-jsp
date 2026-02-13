@@ -3,7 +3,6 @@ package com.busanit501.jsp_server_project1._0206_todo.filter;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,7 +10,7 @@ import java.io.IOException;
 
 @Log4j2
 // 톰캣서버의 todo/하위경로 만 적용대상.
-@WebFilter(urlPatterns = {"/todo/*"})
+//@WebFilter(urlPatterns = {"/todo/*"})
 public class _0206_14_LoginCheckFilter implements Filter {
 
     @Override

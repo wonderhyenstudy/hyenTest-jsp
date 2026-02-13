@@ -9,4 +9,18 @@
         <param-name>adminEmail</param-name>
         <param-value>admin@example.com</param-value>
     </context-param>
+
+
+<!--    20260212 스프링 수업중 : 자바에서도 화면에서도 사용    -->
+<!--    root-context.xml 의 위치 지정  -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/root-context.xml</param-value>
+    </context-param>
+
+<!--    리스너 설정 -> 서버가 리스너를 켜서, 어떠한 액션에 대해서, 감지 모드 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
 </web-app>

@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Log4j2
-@WebServlet(name = "_0206_5_TodoUpdateController", value = "/todo/update_0206")
+@WebServlet(name = "_0206_11_TodoUpdateController", value = "/todo/update_0206")
 public class _0206_11_TodoUpdateController extends HttpServlet {
 
     // 2가지 기능을 제공

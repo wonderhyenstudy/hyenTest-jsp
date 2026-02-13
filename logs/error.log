@@ -22,3 +22,23 @@
 09:34:55.400 [Test worker] INFO  com.busanit501.jsp_server_project1.service._0204_6_TodoServiceTests-[Tests] : 로그 라이브러리 logd4j2 기능 테스트 
 09:34:55.404 [Test worker] INFO  com.busanit501.jsp_server_project1.service._0204_6_TodoServiceTests-_0204_1_TodoDTO(tno=null, title=샘플 제목, 오늘 점심 뭐 먹지?, dueDate=2026-02-05, finished=true)
 09:34:55.429 [Test worker] INFO  com.busanit501.jsp_server_project1._0204_todo.service._0204_4_TodoService-[Service] : _0204_4_TodoService에서 register 작업중, 변환 결과 확인 todoVO : _0204_2_TodoVO(tno=null, title=샘플 제목, 오늘 점심 뭐 먹지?, dueDate=2026-02-05, finished=true)
+10:24:11.981 [Test worker] INFO  com.busanit501.jsp_server_project1.dao._0209_20_MemberDAOTests-로그인
+10:24:38.792 [Test worker] INFO  com.busanit501.jsp_server_project1.dao._0209_20_MemberDAOTests-로그인
+10:25:17.032 [Test worker] INFO  com.busanit501.jsp_server_project1.dao._0209_20_MemberDAOTests-임시 로그인, 유저 조회 결과 : _0209_17_MemberVO(mid=lsy, mpw=1234, mname=이상용1)
+10:41:43.722 [Test worker] INFO  com.busanit501.jsp_server_project1.service._0209_22_MemberServiceTests-멤버 서비스 로그인 테스트 memberDTO: _0209_18_MemberDTO(mid=lsy, mpw=1234, mname=이상용1)
+15:24:43.303 [Test worker] INFO  com.busanit501.jsp_server_project1.dao._0209_20_MemberDAOTests-uuid 이용해서 임시 로그인, 유저 조회 결과 : _0209_17_MemberVO(mid=lsy, mpw=1234, mname=이상용1, uuid=f8da50d2-6734-49fe-b6be-51cfbe1809eb)
+15:39:23.929 [Test worker] INFO  com.busanit501.jsp_server_project1.service._0209_22_MemberServiceTests-uuid 를 이용한 조회 멤버 서비스 로그인 테스트2 memberDTO: _0209_18_MemberDTO(mid=lsy, mpw=1234, mname=이상용1, uuid=f8da50d2-6734-49fe-b6be-51cfbe1809eb)
+09:31:55.687 [Test worker] INFO  com.busanit501.jsp_server_project1.dao._0209_20_MemberDAOTests-임시 로그인, 유저 조회 결과 : _0209_17_MemberVO(mid=lsy, mpw=1234, mname=이상용1, uuid=null)
+10:32:57.740 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,com.busanit501.jsp_server_project1.springex_0212.sample._2_SampleService_0212@7068f7ca
+11:34:28.787 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,com.busanit501.jsp_server_project1.springex_0212.sample._2_SampleService_0212@4632cfc
+11:35:00.387 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,com.busanit501.jsp_server_project1.springex_0212.sample._2_SampleService_0212@4632cfc
+14:36:04.315 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,_2_SampleService_0212(sampleDAO0212=com.busanit501.jsp_server_project1.springex_0212.sample._4_EventSampleDAOImpl_0212@185f7840)
+14:57:25.031 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,_2_SampleService_0212(sampleDAO0212=com.busanit501.jsp_server_project1.springex_0212.sample._3_SampleDAOImpl_0212@656d10a4)
+14:59:12.363 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,_2_SampleService_0212(sampleDAO0212=com.busanit501.jsp_server_project1.springex_0212.sample._4_EventSampleDAOImpl_0212@656d10a4)
+15:00:56.527 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,_2_SampleService_0212(sampleDAO0212=com.busanit501.jsp_server_project1.springex_0212.sample._4_EventSampleDAOImpl_0212@656d10a4)
+15:01:23.711 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,_2_SampleService_0212(sampleDAO0212=com.busanit501.jsp_server_project1.springex_0212.sample._4_EventSampleDAOImpl_0212@656d10a4)
+15:01:49.276 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,_2_SampleService_0212(sampleDAO0212=com.busanit501.jsp_server_project1.springex_0212.sample._3_SampleDAOImpl_0212@656d10a4)
+15:22:37.143 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-실제 객체가 활성화가 되었는지 여부를 객체를 조회해보기,_2_SampleService_0212(sampleDAO0212=com.busanit501.jsp_server_project1.springex_0212.sample._3_SampleDAOImpl_0212@2788d0fe)
+15:39:12.724 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-testConnection : HikariProxyConnection@69160933 wrapping org.mariadb.jdbc.Connection@4f966719
+16:33:15.137 [Test worker] INFO  com.busanit501.jsp_server_project1.mapper.TimeMapperTests-시간 확인으로 마이바티스 임시 연결 화깅ㄴ : 2026-02-12 16:33:15
+16:34:11.147 [Test worker] INFO  com.busanit501.jsp_server_project1.mapper.TimeMapperTests-시간 확인으로 마이바티스 임시 연결 확인 : 2026-02-12 16:34:11

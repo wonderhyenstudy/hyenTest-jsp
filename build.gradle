@@ -66,6 +66,42 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl
     testImplementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '3.0.0-beta2'
 
+    // 7 20260212 spring core
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.3.19'
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.19'
+    implementation group: 'org.springframework', name: 'spring-test', version: '5.3.19'
+
+
+    // 8 20260212 spring mvc
+    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.19'
+
+    //9 spring-jdbc
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+    // Connection 열기/닫기, Statement 생성 등의 작업을 대신 처리합니다.
+    // MyBatis가 내부적으로 DB와 통신할 때 기초 공사 역할을 합니다.
+    implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.19'
+
+    //10 spring-tx
+    //소개: 여러 개의 DB 작업을 '하나의 작업 단위'로 묶어 관리하는 기능을 제공합니다.
+    //어원: Transaction(거래). "전부 성공하거나, 아니면 아예 없었던 일로 하거나"라는 거래의 원칙을 지킵니다.
+    // https://mvnrepository.com/artifact/org.springframework/spring-tx
+    implementation group: 'org.springframework', name: 'spring-tx', version: '5.3.19'
+
+    // 11 mybatis
+    // https://mvnrepository.com/artifact/org.mybatis/mybatis
+    // **"SQL을 자바 코드에서 분리하여 XML로 관리한다"**는 핵심 역할을 수행합니다.
+    // 복잡한 쿼리를 문자열이 아닌 정갈한 SQL 형태로 작성하게 해줍니다.
+    implementation group: 'org.mybatis', name: 'mybatis', version: '3.5.17'
+
+    //12 mybatis-spring
+    // https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
+    // 현재 작업하는 버전, 3.0.4, 클래스 경로 변경,
+    // 다운그레이드, -> 2.0.7
+    // MyBatis의 핵심 객체(SqlSessionFactory)를 스프링의 빈(Bean)으로 등록할 수 있게 해줍니다.
+    // 덕분에 우리가 직접 new를 하지 않고도 @Autowired로 매퍼(Mapper)를 주입받아 사용할 수 있게 됩니다.
+    implementation group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.7'
+
 
 
 
