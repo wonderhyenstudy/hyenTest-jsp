@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--인텔리제이에서, 해당 경로 복사, , 해당 파일 우클릭, 참조 경로/복사해서, 맨밑에 -->
+<!--구분자가 점으로 된걸 이용하기.-->
+<mapper namespace="com.busanit501.jsp_server_project1.springex_0213_keep.mapper.TimeMapper2">
+<!--    xml 파일 , 매퍼 인터페이스 이름 동일해야 함-->
+<!--    src/main/java/com/busanit501/jsp_server_project1/springex_0213/mapper/TimeMapper2.java-->
+<!--    src/main/resources/mappers/TimeMapper2.xml-->
+    <!--   -->
+    <select id="getNow" resultType="string">
+        select now()
+    </select>
+
+
+</mapper>

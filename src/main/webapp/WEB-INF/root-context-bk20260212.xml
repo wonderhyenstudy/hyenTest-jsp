@@ -17,7 +17,6 @@
 <!--    빈 주입 -> 시스템에 객체를 넣어두기. (서버가 시작시, 해당 객체를 켜준다. 사용할 수 있게)  -->
 <!--    서버 시작할때 아래 등록한 빈 객체를 시작해줘-->
 
-
 <!-- 실습1 -->
     <!-- 빈 주입 (객체 등록과정)
 -> 시스템에 객체를 넣어두기.(서버 시작시, 해당 객체를 켜준다, 사용할수 있게)-->
@@ -26,7 +25,7 @@
 
 
 <!-- 실습2 -->
-<!--    <context:component-scan base-package="com.busanit501.jsp_server_project1.springex_0213_keep.sample"/>-->
+    <context:component-scan base-package="com.busanit501.jsp_server_project1.springex_0212.sample"/>
 
     <!-- 데이터베이스 관련 설정 , 매번 타이핑 하는게 아니다. 설정 파일은 복사를 한다. 꼭 기억하기.-->
     <!-- 변경하는 부분은, 옵션 부분, 계정, 비번, 포트 번호, 데이터베이스, 옵션 값(피씨 사양에 따라 달라서, 기본값.)-->
@@ -63,20 +62,15 @@
     <!-- WEB-INF 하위에서 resources , css,js,image 등, 웹브라우저에게 제공하는 목적으로 사용함.-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
-<!--        mappers/**/*.xml : mappers 하위에 어떤 폴더도 상관없고, 대신 마지막 파일의 형태가 .xml 이어야 한다-->
+        <!-- <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>-->
     </bean>
 
     <!-- 모델 맵퍼 이용하는 첫번째 방법, 해당 메서드에 애너테이션 안에 sql 문장을 등록해서 이용. -->
     <!-- 시스템에서, 해당 패키지의 애너테이션 존재 유무를 몰라요, -->
     <!-- 그래서, 시스템에 등록해서 이용해야함. -->
     <!-- 결론, 우리는 이방식으로 안하고, 파일 분리 형식으로 작업 할 예정. -->
-<!--    <mybatis:scan base-package="com.busanit501.jsp_server_project1.springex_0213_keep.mapper"></mybatis:scan>-->
-    <mybatis:scan base-package="com.busanit501.jsp_server_project1.springex_new_0219_keep.mapper"></mybatis:scan>
+    <mybatis:scan base-package="com.busanit501.jsp_server_project1.springex_0212.mapper"></mybatis:scan>
 
 
-    <context:component-scan base-package="com.busanit501.jsp_server_project1.springex_new_0219_keep.config "/>
-
-    <context:component-scan base-package="com.busanit501.jsp_server_project1.springex_new_0219_keep.service "/>
 
 </beans>

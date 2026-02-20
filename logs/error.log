@@ -42,3 +42,6 @@
 15:39:12.724 [Test worker] INFO  com.busanit501.jsp_server_project1.sample.sampleTests-testConnection : HikariProxyConnection@69160933 wrapping org.mariadb.jdbc.Connection@4f966719
 16:33:15.137 [Test worker] INFO  com.busanit501.jsp_server_project1.mapper.TimeMapperTests-시간 확인으로 마이바티스 임시 연결 화깅ㄴ : 2026-02-12 16:33:15
 16:34:11.147 [Test worker] INFO  com.busanit501.jsp_server_project1.mapper.TimeMapperTests-시간 확인으로 마이바티스 임시 연결 확인 : 2026-02-12 16:34:11
+11:14:52.734 [Test worker] INFO  com.busanit501.jsp_server_project1.mapper.TimeMapperTests-시간 확인으로 마이바티스 임시 연결 확인 : 2026-02-13 11:14:53
+16:36:33.762 [Test worker] INFO  com.busanit501.jsp_server_project1.mapper.TodoMapperTests-시간 확인으로 마이바티스 임시 연결 확인 : 2026-02-19 16:36:33
+10:15:30.072 [Test worker] INFO  com.busanit501.jsp_server_project1.mapper.TodoMapperTests-시간 확인으로 마이바티스 임시 연결 확인 : 2026-02-20 10:15:29

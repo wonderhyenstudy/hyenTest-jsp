@@ -31,19 +31,10 @@
         <!-- 특정 패키지 명으로 설정가능. -->
         <Logger name="com.busanit501" level="debug" additivity="false">
             <!-- additivity="false": 상위 로거(Root 로거)로 이벤트를 전달하지 않음-->
-<!--            <AppenderRef ref="FileAppender" level="info"/>-->
+            <AppenderRef ref="FileAppender" level="info"/>
             <AppenderRef ref="Console" level="info"/>
         </Logger>
         <!-- 추가 부분-->
-
-        <!-- 추가 부분 20260220 -->
-        <Logger name="com.busanit501.jsp_server_project1.springex_new_0219_keep.mapper" level="trace" additivity="false">
-            <!-- additivity="false": 상위 로거(Root 로거)로 이벤트를 전달하지 않음-->
-            <!-- <AppenderRef ref="FileAppender" level="info"/>-->
-            <AppenderRef ref="Console"/>
-        </Logger>
-        <!-- 추가 부분 20260220 -->
-
 
         <!-- 전체 설정 기본적으로 INFO 이상일 때 로그를 출력하게 설정-->
         <Root level="info">

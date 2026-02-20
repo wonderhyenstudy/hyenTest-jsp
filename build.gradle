@@ -102,8 +102,10 @@ dependencies {
     // 덕분에 우리가 직접 new를 하지 않고도 @Autowired로 매퍼(Mapper)를 주입받아 사용할 수 있게 됩니다.
     implementation group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.7'
 
-
-
+    //13 20260220 Hibernate Validator
+    // 서버 입장에서 입력된 데이터 유효성 검증 도구
+    // https://mvnrepository.com
+    implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.2.1.Final'
 
 }
 

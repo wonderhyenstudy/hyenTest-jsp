@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--인텔리제이에서, 해당 경로 복사, , 해당 파일 우클릭, 참조 경로/복사해서, 맨밑에 -->
+<!--구분자가 점으로 된걸 이용하기.-->
+<mapper namespace="com.busanit501.jsp_server_project1.springex_new_0219_keep.mapper.TodoMapper">
+    <!--    xml 파일 , 매퍼 인터페이스 이름 동일해야 함-->
+    <!--id 랑 메소드 명이 같아야함-->
+    <!-- id="getTime" -> TodoMapper.java 의 String getTime(); 이랑 같아야 함 -->
+    <select id="getTime" resultType="string">
+        select now()
+    </select>
+    <!--    여러 개의 sql 문장을 여기에 등록할 예정  20260220 -->
+    <!--    insert 추가 작업 -->
+    <!--    TodoMapper 인터페이스 안에 있는 메서드이름과 동일-->
+    <insert id="insert">
+        insert into tbl_todo(title, dueDate, writer) values (#{title},#{dueDate},#{writer})
+    </insert>
+
+    <!-- 전체 목록 조회 sql -->
+    <select id="selectAll" resultType="com.busanit501.jsp_server_project1.springex_new_0219_keep.domain.TodoVO">
+        select * from tbl_todo order by tno desc
+    </select>
+
+
+
+</mapper>
