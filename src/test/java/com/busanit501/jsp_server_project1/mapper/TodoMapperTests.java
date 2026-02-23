@@ -46,4 +46,30 @@ public class TodoMapperTests {
         voList.forEach(vo -> log.info(vo));
     }
 
+    @Test
+    public void testSelectOne(){
+        TodoVO todoVO = todoMapper.selectOne(49L);
+        log.info(todoVO);
+    }
+
+    @Test
+    public void testDeleteOne() {
+    // 각자 데이터베이스에 있는 tno 번호 확인 후 , 테스트 진행하기.
+        todoMapper.delete(38L);
+    }
+
+    @Test
+    public void testDelete() {
+        // 준비물, 화면에서 넘겨받은 TodoVO 있다고 가정, 또는 더미 데이터 준비.
+        TodoVO todoVO = TodoVO.builder()
+                .tno(50L)
+                .title("바뀌니")
+                .dueDate(LocalDate.of(2026,3,2))
+                .finished(true)
+                .build();
+        todoMapper.update(todoVO);
+        log.info("========== 수정");
+        log.info(todoVO);
+    }
+
 }

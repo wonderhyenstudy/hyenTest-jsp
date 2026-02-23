@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Log4j2 // 로그를 기록하는데, 어떤 기준으로 하나요??? 로그레벨
 // info, debug, warning
@@ -38,5 +39,41 @@ public class TodoServiceTests {
                 .build();
         todoService.register(todoDTO);
     }
+
+    @Test
+    public void testGetAll(){
+        List<TodoDTO> dtoList = todoService.getAll();
+        dtoList.forEach(dto -> log.info(dto));
+    }
+
+    @Test
+    public void testGetOne(){
+        TodoDTO todoDTO = todoService.getOne(49L);
+        log.info(todoDTO);
+    }
+
+
+    @Test
+    public void testDeleteOne() {
+    // 각자 데이터베이스에 있는 tno 번호 확인 후 , 테스트 진행하기.
+        todoService.remove(53L);
+    }
+
+
+    @Test
+    public void testDelete() {
+        // 준비물, 화면에서 넘겨받은 TodoVO 있다고 가정, 또는 더미 데이터 준비.
+        TodoDTO todoDTO = TodoDTO.builder()
+                .tno(50L)
+                .title("또또 서비스 바뀌니")
+                .dueDate(LocalDate.of(2026,3,2))
+                .finished(true)
+                .build();
+        todoService.update(todoDTO);
+        log.info("========== 수정");
+        log.info(todoDTO);
+    }
+
+
 
 }

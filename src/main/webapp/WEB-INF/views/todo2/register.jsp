@@ -28,22 +28,17 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <h1>임시 register 화면</h1>
-        <h2>스프링 수업중</h2>
-    </div>
-    <div class="row">
-        <!--        <h1>Header</h1>-->
         <div class="col">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Navbar</a>
+                    <a class="navbar-brand" href="/todo2/list">Navbar</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="/todo2/register">글쓰기</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Features</a>
@@ -63,7 +58,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Featured
+                        글쓰기
                     </div>
                     <div class="card-body">
                         <form action="/todo2/register" method="post">
@@ -80,14 +75,16 @@
                                 <input type="checkbox" class="form-check-input" name="finished">
                                 <label class="form-check-label">Finished</label >
                             </div>--%>
+<%--                            <div class="form-check mb-3">--%>
+<%--                                <input class="form-check-input" type="checkbox" value="" id="checkDefault" name="finished">--%>
+<%--                                <label class="form-check-label" for="checkDefault">Finished</label>--%>
+<%--                            </div>--%>
+
                             <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" value="" id="checkDefault" name="finished">
-                                <label class="form-check-label" for="checkDefault">Finished</label>
+                                <span class="form-check-label">  Finished:  </span>
+                                <input class="form-check-input" type="checkbox" name="finished">
                             </div>
-                            <%--<div class="form-check custom-check-inline">
-                                <input class="form-check-input" type="checkbox" value="" id="checkDefault" name="finished">
-                                <label class="form-check-label" for="checkDefault">완료 여부</label>
-                            </div>--%>
+
                             <div class="mb-3">
                                 <button type="reset" class="btn btn-secondary">초기화</button>
                                 <button type="submit" class="btn btn-primary">등록처리</button>

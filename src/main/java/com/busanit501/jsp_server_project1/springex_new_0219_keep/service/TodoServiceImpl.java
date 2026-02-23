@@ -48,13 +48,54 @@ public class TodoServiceImpl implements TodoService{
         todoMapper.insert(todoVO);
 
     }
-
+    // 전체 목록조회
     @Override
     public List<TodoDTO> getAll() {
+        // stream 병렬처리
+        // todoMapper.selectAll() : DB로 부터 전달받은 정보를 TodoVO 타입을 요소로 가지는 리스트로 받기.
+        // .stream() : 병렬처리, 중간 작업, 최종 작업,
+        // 중간 작업 : .map(vo -> modelMapper.map(vo, TodoDTO.class)) , 리스트에서 요소를 하나 꺼내서, VO -> DTO 타입으로
+        // 최종 작업 : 변환된 DTO를 리스트화 시키기.
+        // 최종은 : List<TodoDTO> dtoList, 변환된 요소들이 리스트로 반환되었다.
         List<TodoDTO> dtoList = todoMapper.selectAll().stream()
                 .map(vo -> modelMapper.map(vo, TodoDTO.class))
                 .collect(Collectors.toList());
         return dtoList;
     }
+    // 하나 조회
+
+
+    @Override
+    public TodoDTO getOne(Long tno) {
+        TodoVO todoVO = todoMapper.selectOne(tno);
+        TodoDTO todoDTO = modelMapper.map(todoVO, TodoDTO.class);
+        return todoDTO;
+    }
+
+    @Override
+    public void remove(Long tno) {
+        todoMapper.delete(tno);
+    }
+
+    //삭제
+
+    @Override
+    public void update(TodoDTO todoDTO) {
+        log.info("서비스 작업: insert 기능 작업중. ");
+        // 변환
+        // 객체 변환(Mapping). 왜햐나?? 화면용(DTO)과 DB용(VO/Entity)은 용도가 다르기 때문
+        // 옛날방식 -> vo.setTitle(dto.getTitle())
+        // 현재방식 맵퍼로 간단하게-> ModelMapper가 이름이 같은 필드를 찾아서 자동으로 값을 복사
+        TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
+        log.info("========== 수정: " + todoVO);
+        // 넣어주기
+        // DB 저장 실행
+        // TodoMapper.xml에 적힌 INSERT SQL 문장을 실행하라고 명령
+        // 여기서 todoVO를 던져주면, MyBatis가 XML의 #{title}, #{dueDate} 자리에 값을 쏙쏙 박아넣습니다.
+        todoMapper.update(todoVO);
+    }
+
+
+
 }
 

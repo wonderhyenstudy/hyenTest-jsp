@@ -15,7 +15,7 @@
     <!--    insert 추가 작업 -->
     <!--    TodoMapper 인터페이스 안에 있는 메서드이름과 동일-->
     <insert id="insert">
-        insert into tbl_todo(title, dueDate, writer) values (#{title},#{dueDate},#{writer})
+        insert into tbl_todo(title, dueDate, writer, finished) values (#{title},#{dueDate},#{writer},#{finished})
     </insert>
 
     <!-- 전체 목록 조회 sql -->
@@ -23,6 +23,19 @@
         select * from tbl_todo order by tno desc
     </select>
 
+    <!-- 하나 조회 sql -->
+    <select id="selectOne" resultType="com.busanit501.jsp_server_project1.springex_new_0219_keep.domain.TodoVO">
+        select * from tbl_todo where tno = #{tno}
+    </select>
 
 
+    <!-- 삭제하기 -->
+    <delete id="delete">
+        delete from tbl_todo where tno = #{tno}
+    </delete>
+
+    <!-- 수정하기 -->
+    <update id="update">
+        update tbl_todo set title = #{title}, dueDate = #{dueDate}, finished = #{finished} where tno = #{tno}
+    </update>
 </mapper>

@@ -12,4 +12,13 @@ public interface TodoService {
     // 전체 목록
     List<TodoDTO> getAll();
 
+    // 하나 조회
+    TodoDTO getOne(Long tno);
+
+    // 삭제
+    void remove(Long tno);
+
+    // 수정하기
+    void update(TodoDTO todoDTO);
+
 }
