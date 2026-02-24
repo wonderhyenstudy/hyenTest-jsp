@@ -92,4 +92,27 @@ public class TodoController {
         log.info(" 유효성 통과한 데이터 todoDTO : " + todoDTO);
         return "redirect:/todo2/list";
     }
+
+    @PostMapping("/modify")
+    // 유효성 체크시, 주의사항, !) @Valid TodoDTO todoDTO, BindingResult bindingResult, 순서 주의!!!
+    public String postUpdate(@Valid TodoDTO todoDTO, BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes) {
+        log.info("todo2 update..post");
+        // 유효성 체크
+        if(bindingResult.hasErrors()) {
+            log.info("유효성 오류가 있습니다. ");
+            // 서버에서 화면으로 임시 데이터를 전달. 박스이름: errors, 박스 내용물: 오류가 난 이유.
+            redirectAttributes.addFlashAttribute("errors",bindingResult.getAllErrors());
+            return "redirect:/todo2/modify";
+        }
+
+        log.info("todoDTO2 : " + todoDTO);
+        // 서비스의 도움을 받아서, 화면으로 부터 전달 받은 데이터를 전달하기.
+        todoService.update(todoDTO);
+
+        log.info(" 유효성 통과한 데이터 todoDTO : " + todoDTO);
+        return "redirect:/todo2/list";
+    }
+
+
 }
