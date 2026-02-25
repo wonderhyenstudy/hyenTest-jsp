@@ -1,6 +1,8 @@
 package com.busanit501.jsp_server_project1.springex_new_0219_keep.service;
 
 import com.busanit501.jsp_server_project1.springex_new_0219_keep.domain.TodoVO;
+import com.busanit501.jsp_server_project1.springex_new_0219_keep.dto.PageRequestDTO;
+import com.busanit501.jsp_server_project1.springex_new_0219_keep.dto.PageResponseDTO;
 import com.busanit501.jsp_server_project1.springex_new_0219_keep.dto.TodoDTO;
 import com.busanit501.jsp_server_project1.springex_new_0219_keep.mapper.TodoMapper;
 import lombok.RequiredArgsConstructor;
@@ -80,12 +82,16 @@ public class TodoServiceImpl implements TodoService{
     //삭제
 
     @Override
-    public void update(TodoDTO todoDTO) {
-        log.info("서비스 작업: insert 기능 작업중. ");
+    public void modify(TodoDTO todoDTO) {
+        log.info("서비스 작업: modify 기능 작업중. ");
         // 변환
         // 객체 변환(Mapping). 왜햐나?? 화면용(DTO)과 DB용(VO/Entity)은 용도가 다르기 때문
         // 옛날방식 -> vo.setTitle(dto.getTitle())
         // 현재방식 맵퍼로 간단하게-> ModelMapper가 이름이 같은 필드를 찾아서 자동으로 값을 복사
+
+        // 화면에서 전달받은 데이터는 어디에 담죠? TodoDTO
+        // 서비스에서 -> 데이터 수정할 때는 어디에 담죠 ? TodoVO
+        // 여기서, 변환하기.
         TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
         log.info("========== 수정: " + todoVO);
         // 넣어주기
@@ -95,7 +101,26 @@ public class TodoServiceImpl implements TodoService{
         todoMapper.update(todoVO);
     }
 
+    @Override
+    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
+// 반환 해야할 내용물이 : PageResponseDTO 를 만들기 위한 준비물
+// 1) PageRequestDTO pageRequestDTO, : 이미 화면으로부터 전달받았다.
+// 2)List<E> dtoList,
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        List<TodoDTO> dtoList = voList.stream()
+                .map(vo -> modelMapper.map(vo, TodoDTO.class))
+                .collect(Collectors.toList());
+// 3) int total
+        int total = todoMapper.getCount(pageRequestDTO);
 
+// 결론, 반환 타입 : PageResponseDTO -> 객체를 생성할 때, 무엇을 호출 ? 생성자 호출.
+        PageResponseDTO<TodoDTO> pageResponseDTO = PageResponseDTO.<TodoDTO>withAll()
+                .dtoList(dtoList)
+                .total(total)
+                .pageRequestDTO(pageRequestDTO)
+                .build();
+        return pageResponseDTO;
+    }
 
 }
 

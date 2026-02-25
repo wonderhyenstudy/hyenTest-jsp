@@ -59,18 +59,19 @@
                         <%--                            부트스트랩 이용중이고, 폼 컨트롤 하나씩 적용해보기.--%>
                         <%--                        상세보기 화면, 디비로 부터 전달 받은 데이터를 읽기 전용으로 화면에 표시하는게 목적. --%>
                         <form action="/todo2/modify" method="post">
+                            <%-- 페이지, 사이즈 정보를 숨겨서, 서버에 전달하기 --%>
+                            <input type="hidden" name="page" value="${pageRequestDTO.page}">
+                            <input type="hidden" name="size" value="${pageRequestDTO.size}">
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Tno:</span>
-<%--                                <input class="form-control" type="text" name="tno" value=<c:out value="${dto.tno}"></c:out> readonly>--%>
-<%--                                <input class="form-control" type="text" name="tno" value='<c:out value="${dto.tno}"></c:out>' readonly>--%>
-
-                                <input class="form-control" name="title" value="<c:out value='${dto.title}'/>">
+                                <input class="form-control" type="text" name="tno"
+                                       value="<c:out value='${dto.tno}'></c:out>" readonly>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Title:</span>
                                 <input class="form-control" type="text" name="title"
-                                       value=
-                                <c:out value="${dto.title}"></c:out>>
+                                       value="<c:out value='${dto.title}'></c:out>">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">DueDate: </span>
@@ -90,7 +91,7 @@
                                 ${dto.finished? "checked" :""}>
                             </div>
                             <div>
-                                <button class="btn btn btn-danger" type="button">삭제하기</button>
+                                <button class="btn btn-danger" type="button">삭제하기</button>
                                 <button class="btn btn-primary" type="button">수정하기</button>
                                 <button class="btn btn-secondary" type="button">목록가기</button>
                             </div>
@@ -98,7 +99,8 @@
                         <script>
                             //목록가기
                             document.querySelector(".btn-secondary").addEventListener("click", function (e) {
-                                    self.location = "/todo2/list"
+                                    // self.location = "/todo2/list"
+                                    self.location = "/todo2/list?${pageRequestDTO.link}"
                                 }, false
                             )
                             //삭제하기. -> form 태그 내부에 액션의 주소 : /todo2/modify
@@ -121,6 +123,28 @@
                                     formObj.submit()
                                 }, false
                             )
+
+                            // 수정하기
+                            document.querySelector(".btn-primary").addEventListener("click", function (e) {
+                                    // 기존 폼 태그의 전달이 될 주소를 변경.
+                                    // 기존 폼 태그의 요소를 선택해서, 속성을 변경.
+                                    const formObj = document.querySelector("form");
+
+                                    // 기존의 서버 주소로 가는 기능을 막기.
+                                    e.preventDefault();
+                                    // 해당 버튼 만 클릭을 했을 때, 이벤트가 동작하는게 원함.
+                                    // 만약, 버튼의 부모 요소를 클릭을 해도, 똑같이 클릭이 된 효과를 원하지 않아요.
+                                    // 버튼이 아니라, 그 버튼 요소의 부모 요소의 배경을 클릭해도, 똑같이 이벤트 호출이 되는 것을 막음.
+                                    // 결론, 삭제 버튼만 클릭해야, 삭제 기능을 동작 하겠다.
+                                    e.stopPropagation();
+                                    formObj.action = "/todo2/modify"
+                                    formObj.method = "post"
+                                    formObj.submit()
+                                }, false
+                            )
+
+
+
                         </script>
                     </div>
                 </div>

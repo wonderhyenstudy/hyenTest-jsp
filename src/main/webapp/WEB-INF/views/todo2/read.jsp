@@ -52,28 +52,28 @@
           <div class="card-body">
             <%-- 부트스트랩 이용중이고, 폼 컨트롤 하나씩 적용해보기.--%>
             <%-- 상세보기 화면, 디비로 부터 전달 받은 데이터를 읽기 전용으로 화면에 표시하는게 목적. --%>
-            <div class="input-group mb-3">
-              <span class="input-group-text">Tno:</span>
-              <input class="form-control" type="text" name="tno"
-                     value=<c:out value="${dto.tno}"></c:out> readonly>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">Title:</span>
-              <input class="form-control" type="text" name="title"
-                     value=<c:out value="${dto.title}"></c:out> readonly>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">DueDate: </span>
-              <input class="form-control" type="date" name="dueDate"
-                     value=<c:out value="${dto.dueDate}"></c:out> readonly>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text"> Writer: </span>
-              <input class="form-control" type="text" name="writer"
-                     value=<c:out value="${dto.writer}"></c:out> readonly>
-            </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Tno:</span>
+                <input class="form-control" type="text" name="tno"
+                       value="<c:out value='${dto.tno}'></c:out>" readonly>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Title:</span>
+                <input class="form-control" type="text" name="title"
+                       value="<c:out value='${dto.title}'></c:out>" readonly>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">DueDate: </span>
+                <input class="form-control" type="date" name="dueDate"
+                       value=<c:out value="${dto.dueDate}"></c:out> readonly>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"> Writer:  </span>
+                <input class="form-control" type="text" name="writer"
+                       value=<c:out value="${dto.writer}"></c:out> readonly>
+              </div>
               <div class="form-check mb-3">
-                <span class="form-check-label"> Finished: </span>
+                <span class="form-check-label">  Finished:  </span>
                 <input class="form-check-input" type="checkbox" name="finished"
                 ${dto.finished? "checked" :""}>
               </div>
@@ -84,12 +84,14 @@
               <script>
                 //목록가기
                 document.querySelector(".btn-secondary").addEventListener("click", function (e) {
-                          self.location = "/todo2/list"
+                          self.location = "/todo2/list?${pageRequestDTO.link}"
+                          // self.location = "/todo2/list"
                         },false
                 )
                 //수정폼 가기
                 document.querySelector(".btn-primary").addEventListener("click", function (e) {
-                          self.location = "/todo2/modify?tno=" + ${dto.tno}
+                          <%--self.location = "/todo2/modify?tno=" + ${dto.tno}--%>
+                          self.location = `/todo2/modify?tno=${dto.tno}&${pageRequestDTO.link}`
                         },false
                 )
               </script>

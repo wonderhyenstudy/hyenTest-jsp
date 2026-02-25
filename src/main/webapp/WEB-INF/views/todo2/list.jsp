@@ -43,6 +43,64 @@
                 </div>
             </nav>
         </div>
+
+        <%--검색영역--%>
+        <div class="row content">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        검색창 화면
+                    </div>
+                    <div class="card-body">
+                        <form action="/todo2/list" method="get">
+                            <input type="hidden" name="size" value="${pageRequestDTO.size}">
+                            <div class="mb-3">
+                                <input type="checkbox" name="finished"
+                                ${pageRequestDTO.finished ? "checked" : ""}
+                                > 완료여부
+                            </div>
+                            <div class="mb-3">
+                                <input type="checkbox" name="types" value="t"
+                                ${pageRequestDTO.checkType("t") ? "checked" : ""}
+                                > 제목
+                                <input type="checkbox" name="types" value="w"
+                                ${pageRequestDTO.checkType("w") ? "checked" : ""}
+                                > 작성자
+                                <%-- c:out ,출력시, 검색어, 불필요한 자바스크립트 태그가 들어가면 보안상, 안좋으므로 --%>
+                                <%-- 안전한 출력을 선택--%>
+                                <input type="text" name="keyword" class="form-control"
+                                       value='<c:out value="${pageRequestDTO.keyword}"/>'
+                                >
+                            </div>
+                            <div class="mb-3 input-group dueDateDiv">
+                                <input type="date" name="from" class="form-control"
+                                       value="${pageRequestDTO.from}"
+                                >
+                                <input type="date" name="to" class="form-control"
+                                       value="${pageRequestDTO.to}"
+                                >
+                            </div>
+                            <div class="mb-3 input-group">
+                                <div class="float-end">
+                                    <button type="submit"  class="btn btn-primary">검색하기</button>
+                                    <button type="reset" class="btn btn-info clearBtn">초기화하기</button>
+                                </div>
+                            </div>
+                            <script>
+                                document.querySelector(".clearBtn").addEventListener("click", function (e){
+                                    e.preventDefault()
+                                    e.stopPropagation()
+                                    self.location = `/todo2/list`
+                                })
+                            </script>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--검색영역--%>
+
         <div class="row content">
             <div class="col">
                 <div class="card">
@@ -61,11 +119,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${dtoList}" var="dto">
+                            <%--<c:forEach items="${dtoList}" var="dto">--%>
+                            <%-- responseDTO.dtoList 호출하는 것은 responseDTO의 getter 를 호출하는 효과와 동일--%>
+                            <c:forEach items="${responseDTO.dtoList}" var="dto">
                                 <tr>
                                     <th><c:out value="${dto.tno}"/></th>
                                     <td>
-                                        <a href="/todo2/read?tno=${dto.tno}" class="text-decoration-none">
+                                        <a href="/todo2/read?tno=${dto.tno}&${pageRequestDTO.link}" class="text-decoration-none">
                                             <c:out value="${dto.title}"/>
                                         </a>
                                     </td>
@@ -76,6 +136,39 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            <ul class="pagination flex-wrap">
+                                <c:if test="${responseDTO.prev}">
+                                    <li class="page-item"><a class="page-link" data-num="${responseDTO.start - 1}">Previous</a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
+                                    <li class="page-item ${responseDTO.page == num ? "active" : ""}">
+                                        <a class="page-link" data-num="${num}">${num}</a>
+                                    </li>
+                                </c:forEach>
+                                <c:if test="${responseDTO.next}">
+                                    <li class="page-item"><a class="page-link"
+                                                             data-num="${responseDTO.end + 1}">Next</a></li>
+                                </c:if>
+                            </ul>
+                        </div>
+                        <script>
+                            // document.querySelector(".pagination") -> <ul>태그를 의미,
+                            // <ul>태그 를 포함해서, 하위에 어떤 태그, <li>, <a> 태그도 있다.
+                            document.querySelector(".pagination").addEventListener("click", function (e) {
+                                e.preventDefault(); // 기본 동작 막기
+                                e.stopPropagation(); // 부모 요소 전팍 막기, 해당 요소외에는 클릭을 감지 안하겠다.
+                                const target = e.target //클릭한 <li>, <a> 태그 요소 의미,
+                                if (target.tagName !== 'A') {
+                                    return // 이벤트 처리 동작을 안하고, 그냥 나가겠다.
+                                }
+                                // <a>태그만 이벤트 처리를 하겠다.
+                                // <a class="page-link" data-num=""
+                                const num = target.getAttribute("data-num")
+                                self.location = `/todo2/list?page=\${num}`
+                            }, false)
+                        </script>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 package com.busanit501.jsp_server_project1.mapper;
 
 import com.busanit501.jsp_server_project1.springex_new_0219_keep.domain.TodoVO;
+import com.busanit501.jsp_server_project1.springex_new_0219_keep.dto.PageRequestDTO;
 import com.busanit501.jsp_server_project1.springex_new_0219_keep.mapper.TodoMapper;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -71,5 +72,66 @@ public class TodoMapperTests {
         log.info("========== 수정");
         log.info(todoVO);
     }
+
+    @Test
+    public void testUpdate() {
+        // 준비물, 화면에서 넘겨받은 TodoVO 있다고 가정, 또는 더미 데이터 준비.
+        TodoVO todoVO = TodoVO.builder()
+                .tno(50L)
+                .title("또또 안 바뀌니???")
+                .dueDate(LocalDate.of(2026,3,2))
+                .finished(true)
+                .build();
+        todoMapper.update(todoVO);
+    }
+
+    // 페이징 처리가 된 목록 조회
+    @Test
+    public void testSelectList() {
+    // 화면에서 전달 받은 페이지네이션을 위한 준비물 , 준비.
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(2)
+                .size(10)
+                .build();
+
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        voList.forEach(vo -> log.info(vo));
+    }
+
+    // 전체 갯수 조회
+    @Test
+    public void testSelectListCount() {
+        // 화면에서 전달 받은 페이지네이션을 위한 준비물 , 준비.
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .build();
+
+        int resultCount = todoMapper.getCount(pageRequestDTO);
+        log.info("전체갯수 : " + resultCount);
+    }
+
+    // 타입에 따른 검색 연습,
+    @Test
+    public void testSelectSearch() {
+        // 검색시 준비물, 검색어 , 타입
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .types(new String[]{"t","w"})
+                .keyword("점심")
+                .finished(true)
+                .from(LocalDate.of(2026,02,01))
+                .to(LocalDate.of(2026,02,28))
+                .build();
+
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        voList.forEach(vo -> log.info(vo));
+        log.info("검색테스트");
+        // 전체 갯수
+        log.info(todoMapper.getCount(pageRequestDTO));
+    }
+
+
 
 }
