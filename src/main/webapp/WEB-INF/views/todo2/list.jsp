@@ -53,6 +53,8 @@
                     </div>
                     <div class="card-body">
                         <form action="/todo2/list" method="get">
+                            <%--계속 기본 page =1 전달이 되어서, 수정--%>
+                            <%--<input type="hidden" name="page" value="${pageRequestDTO.page}">--%>
                             <input type="hidden" name="size" value="${pageRequestDTO.size}">
                             <div class="mb-3">
                                 <input type="checkbox" name="finished"
@@ -166,7 +168,21 @@
                                 // <a>태그만 이벤트 처리를 하겠다.
                                 // <a class="page-link" data-num=""
                                 const num = target.getAttribute("data-num")
-                                self.location = `/todo2/list?page=\${num}`
+                                // 기존 정보는 단순, 페이지 정보만 유지한 채 이동했고,
+                                // self.location = `/todo2/list?page=\${num}`
+
+                                // 20260226 링크 정보 모두 유지하기 위해 수정 form 태그 이용
+                                // 검색착 폼 태그를 이용해서, 서버에, 검색, 필터 준비물 같이 전달.
+                                // 물론, 페이지, 사이즈 정보도 같이 전달. 히든으로 페이지, 사이즈 전달.
+                                // 폼 방식으로 만 서버에 전달하면, 1) 검색, 필터 준비물 + 2) 페이지 정보, 사이즈 정보 같이 전달.
+                                const formObj = document.querySelector("form")
+
+                                //
+                                formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'>`
+
+                                formObj.submit()
+
+
                             }, false)
                         </script>
                     </div>

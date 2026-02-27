@@ -118,7 +118,9 @@
                                     // 버튼이 아니라, 그 버튼 요소의 부모 요소의 배경을 클릭해도, 똑같이 이벤트 호출이 되는 것을 막음.
                                     // 결론, 삭제 버튼만 클릭해야, 삭제 기능을 동작 하겠다.
                                     e.stopPropagation();
-                                    formObj.action = "/todo2/delete"
+                                    /*formObj.action = "/todo2/delete"*/
+                                    // 삭제 후 검색 정보 유지 하기 20260226 수정
+                                    formObj.action = `/todo2/delete?${pageRequestDTO.link}`
                                     formObj.method = "post"
                                     formObj.submit()
                                 }, false
